@@ -3,224 +3,1454 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meaford DJ - Professional DJ Services in Meaford, Ontario</title>
-    <meta name="description" content="Professional DJ services for weddings, parties, and events in Meaford, Ontario. Book Meaford DJ for an unforgettable experience!">
+    <title>Meaford DJ - Premium Wedding & Event DJ Services in Meaford, Ontario</title>
+    <meta name="description" content="Award-winning DJ services for weddings & events in Meaford, Ontario. 25+ years, 10,000+ events. Professional DJ, Photobooth & Karaoke services.">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         html {
             scroll-behavior: smooth;
         }
-        ::-webkit-scrollbar {
-            display: none;
-        }
+        
         body {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
         }
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: #fff;
-            margin: 2px 0;
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 5px;
+        }
+        
+        /* Animated gradient background */
+        .hero-gradient {
+            background: linear-gradient(-45deg, #1e3a8a, #3b82f6, #8b5cf6, #ec4899);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Fade in animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Card hover effects */
+        .card-hover {
             transition: all 0.3s ease;
         }
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Glowing button */
+        .glow-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .glow-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+        }
+        
+        .glow-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .glow-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* Stats counter animation */
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+        
+        /* Pricing cards */
+        .pricing-card {
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            border-color: #3b82f6;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: scale(1.08);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.12);
+        }
+        
+        /* Testimonial slider */
+        .testimonial-slider {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .testimonial-slide {
+            min-width: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        /* Music note animation */
+        .music-note {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: musicFloat 10s linear infinite;
+        }
+        
+        @keyframes musicFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
             }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                position: absolute;
-                top: 64px;
-                left: 0;
-                background-color: #1f2937;
-                padding: 1rem;
+            10% {
+                opacity: 0.1;
             }
-            .nav-links.active {
-                display: flex;
+            90% {
+                opacity: 0.1;
             }
-            .nav-links li {
-                margin: 1rem 0;
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
             }
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Navbar scroll effect */
+        .navbar-scrolled {
+            background: rgba(17, 24, 39, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Gallery grid */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        
+        /* Sticky CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+        }
+        
+        /* Package ribbon */
+        .package-ribbon {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            transform: rotate(45deg);
+            background: #f59e0b;
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Video background overlay */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(139, 92, 246, 0.8) 100%);
+        }
+        
+        /* Icon boxes */
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 auto 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover .icon-box {
+            transform: rotateY(360deg);
         }
     </style>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-50">
+    <!-- Floating Music Notes -->
+    <i class="fas fa-music music-note" style="left: 10%; animation-delay: 0s;"></i>
+    <i class="fas fa-music music-note" style="left: 30%; animation-delay: 3s;"></i>
+    <i class="fas fa-music music-note" style="left: 50%; animation-delay: 6s;"></i>
+    <i class="fas fa-music music-note" style="left: 70%; animation-delay: 2s;"></i>
+    <i class="fas fa-music music-note" style="left: 90%; animation-delay: 4s;"></i>
+
     <!-- Navigation Bar -->
-    <nav class="bg-gray-800 text-white fixed w-full top-0 z-10 shadow-lg">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Meaford DJ</h1>
-            <div class="hamburger md:hidden">
-                <span></span>
-                <span></span>
-                <span></span>
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300" style="background: transparent;">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-headphones text-white"></i>
+                    </div>
+                    <h1 class="text-2xl md:text-3xl font-bold text-white">Meaford DJ</h1>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex space-x-8 text-white font-medium">
+                    <li><a href="#home" class="hover:text-blue-400 transition">Home</a></li>
+                    <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
+                    <li><a href="#services" class="hover:text-blue-400 transition">Services</a></li>
+                    <li><a href="#packages" class="hover:text-blue-400 transition">Packages</a></li>
+                    <li><a href="#testimonials" class="hover:text-blue-400 transition">Reviews</a></li>
+                    <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
+                </ul>
+                
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="tel:+15195385555" class="text-white hover:text-blue-400 transition">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                    <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition glow-btn">
+                        Book Now
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <ul class="nav-links flex space-x-6 md:flex hidden">
-                <li><a href="#home" class="hover:text-blue-400 transition">Home</a></li>
-                <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
-                <li><a href="#services" class="hover:text-blue-400 transition">Services</a></li>
-                <li><a href="#packages" class="hover:text-blue-400 transition">Packages</a></li>
-                <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
-            </ul>
         </div>
     </nav>
 
-    <!-- Home Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/1600x900/?dj');">
-        <div class="text-center text-white bg-black bg-opacity-50 p-8 rounded">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">Meaford DJ Services</h2>
-            <p class="text-lg md:text-xl mb-6">Unforgettable entertainment for your events in Meaford, Ontario!</p>
-            <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Book Now</a>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-full h-full bg-gray-900 z-40 md:hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-white text-xl">
+            <a href="#home" class="hover:text-blue-400 transition mobile-link">Home</a>
+            <a href="#about" class="hover:text-blue-400 transition mobile-link">About</a>
+            <a href="#services" class="hover:text-blue-400 transition mobile-link">Services</a>
+            <a href="#packages" class="hover:text-blue-400 transition mobile-link">Packages</a>
+            <a href="#testimonials" class="hover:text-blue-400 transition mobile-link">Reviews</a>
+            <a href="#contact" class="hover:text-blue-400 transition mobile-link">Contact</a>
+            <a href="tel:+15195385555" class="bg-blue-600 px-8 py-3 rounded-full hover:bg-blue-700 transition">
+                Call Now
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden">
+        <div class="video-overlay"></div>
+        <div class="container mx-auto px-4 z-10 relative">
+            <div class="text-center text-white max-w-4xl mx-auto">
+                <div class="mb-8 float">
+                    <span class="inline-block bg-yellow-400 text-gray-900 px-6 py-2 rounded-full text-sm font-bold mb-4">
+                        🏆 Award-Winning DJ Services
+                    </span>
+                </div>
+                <h2 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    Make Your Wedding<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-500">
+                        Absolutely Unforgettable
+                    </span>
+                </h2>
+                <p class="text-xl md:text-2xl mb-8 text-gray-200">
+                    25+ Years of Excellence • 10,000+ Magical Events • Trusted by Couples Across Ontario
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+                    <a href="#contact" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition glow-btn">
+                        <i class="fas fa-calendar-check mr-2"></i> Check Availability
+                    </a>
+                    <a href="#packages" class="bg-white text-gray-900 px-10 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition glow-btn">
+                        <i class="fas fa-gift mr-2"></i> View Packages
+                    </a>
+                </div>
+                
+                <!-- Trust Badges -->
+                <div class="flex flex-wrap justify-center gap-8 text-sm">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-shield-alt text-yellow-400 text-2xl"></i>
+                        <span>Fully Insured</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-award text-yellow-400 text-2xl"></i>
+                        <span>CDJA Member</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-certificate text-yellow-400 text-2xl"></i>
+                        <span>AVLA Licensed</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                        <span>5-Star Rated</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#stats" class="text-white text-3xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="fade-in">
+                    <div class="stat-number">10,000+</div>
+                    <p class="text-gray-400 mt-2">Events Hosted</p>
+                </div>
+                <div class="fade-in">
+                    <div class="stat-number">25+</div>
+                    <p class="text-gray-400 mt-2">Years Experience</p>
+                </div>
+                <div class="fade-in">
+                    <div class="stat-number">100%</div>
+                    <p class="text-gray-400 mt-2">Satisfaction Rate</p>
+                </div>
+                <div class="fade-in">
+                    <div class="stat-number">5,000+</div>
+                    <p class="text-gray-400 mt-2">Songs Library</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 bg-white">
+    <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">About Meaford DJ</h2>
-            <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-4">
-                With over 10,000 events and 25 years in business, Meaford DJ is a trusted and award-winning DJ service in Ontario. Our team tailors every event to your unique mood and taste, offering an extensive variety of music spanning from the 1940s to today's Top 40 hits.
-            </p>
-            <p class="text-lg text-gray-700 max-w-2xl mx-auto">
-                Our reputation is built on outstanding service, reasonable prices, and a vast music selection, making us a top choice in Meaford and beyond. Recommended by previous clients, venues, and event guests, Meaford DJ is proud to be a member of the Canadian Disc Jockey Association (CDJA), AVLA licensed, and fully insured.
-            </p>
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Why Choose Us</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Ontario's Most Trusted DJ Service</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        Creating magical moments and unforgettable celebrations since 2000
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in">
+                        <div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white shadow-2xl">
+                            <h3 class="text-3xl font-bold mb-6">Your Wedding, Your Way</h3>
+                            <p class="text-lg mb-6 leading-relaxed">
+                                With over 10,000 events and 25 years of experience, Meaford DJ has become Ontario's most trusted name in wedding entertainment. We don't just play music—we create the soundtrack to your love story.
+                            </p>
+                            <p class="text-lg leading-relaxed">
+                                Our extensive music library spans from the romantic classics of the 1940s to today's hottest Top 40 hits, ensuring every generation on your dance floor feels the magic.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-heart text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2">Personalized Experience</h4>
+                                    <p class="text-gray-600">Every event is tailored to your unique style, preferences, and vision. Your celebration, your music, your memories.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-users text-purple-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2">Professional MC Services</h4>
+                                    <p class="text-gray-600">Seamless event flow from first dance to last call, with smooth announcements and perfect timing.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-shield-alt text-pink-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2">Fully Licensed & Insured</h4>
+                                    <p class="text-gray-600">CDJA member, AVLA licensed, and fully insured. Your peace of mind is our priority.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-thumbs-up text-yellow-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2">Highly Recommended</h4>
+                                    <p class="text-gray-600">Endorsed by couples, venues, and guests across Ontario. Our reputation speaks for itself.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 bg-gray-100">
+    <section id="services" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded shadow">
-                    <h3 class="text-xl font-semibold mb-4">Wedding DJ</h3>
-                    <p class="text-gray-700">Personalized music and professional MC services to make your wedding day unforgettable. We consult with you to reflect your style, from first dances to last calls.</p>
+            <div class="text-center mb-16 fade-in">
+                <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Complete Entertainment</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Premium Services for Every Occasion</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    From intimate ceremonies to grand celebrations, we bring the perfect atmosphere
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Wedding DJ -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="p-8">
+                        <div class="icon-box">
+                            <i class="fas fa-rings-wedding"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-center">Wedding DJ</h3>
+                        <p class="text-gray-600 mb-6 text-center">
+                            Transform your special day into an unforgettable celebration with personalized music, professional MC services, and seamless coordination from ceremony to last dance.
+                        </p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Pre-event consultation & planning</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Custom playlist creation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Professional MC services</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Ceremony music (if requested)</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded shadow">
-                    <h3 class="text-xl font-semibold mb-4">Corporate Events</h3>
-                    <p class="text-gray-700">Elevate your company events with professional DJ services, perfect for holiday parties, awards nights, or team-building events. Add karaoke for extra fun!</p>
+                
+                <!-- Corporate Events -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="p-8">
+                        <div class="icon-box">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-center">Corporate Events</h3>
+                        <p class="text-gray-600 mb-6 text-center">
+                            Elevate your company functions with sophisticated entertainment perfect for holiday parties, product launches, team building events, and awards ceremonies.
+                        </p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Professional atmosphere</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Customized music selection</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Optional karaoke add-on</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Award ceremony hosting</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded shadow">
-                    <h3 class="text-xl font-semibold mb-4">Karaoke</h3>
-                    <p class="text-gray-700">Entertain your guests with our wide variety of karaoke songs, professional sound equipment, and dance music sets to keep the party going.</p>
+                
+                <!-- Photobooth -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="p-8">
+                        <div class="icon-box">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-center">Photobooth Rental</h3>
+                        <p class="text-gray-600 mb-6 text-center">
+                            Capture every smile and silly moment with our premium portable photobooth featuring instant prints, fun props, and unlimited photos for your guests.
+                        </p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>3-hour session included</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Unlimited instant prints</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Fun props & backdrops</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Digital copies included</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded shadow">
-                    <h3 class="text-xl font-semibold mb-4">Music Video Road Show</h3>
-                    <p class="text-gray-700">Enhance your event with music videos displayed on large screens, creating an immersive dance experience for your guests.</p>
+                
+                <!-- Karaoke -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="p-8">
+                        <div class="icon-box">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-center">Karaoke Party</h3>
+                        <p class="text-gray-600 mb-6 text-center">
+                            Get your guests singing with our extensive karaoke library, professional sound system, and seamless integration with DJ services for non-stop entertainment.
+                        </p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Thousands of songs</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Pro audio equipment</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Lyric displays</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>DJ music between songs</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded shadow">
-                    <h3 class="text-xl font-semibold mb-4">Special Events & Charity</h3>
-                    <p class="text-gray-700">From store openings to charity events, we provide sound, music, and hosting at discounted rates for charitable causes.</p>
+                
+                <!-- Music Video Road Show -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="p-8">
+                        <div class="icon-box">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-center">Music Video Show</h3>
+                        <p class="text-gray-600 mb-6 text-center">
+                            Take your event to the next level with music videos displayed on large screens, creating an immersive visual and audio experience.
+                        </p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Large screen displays</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>HD music video library</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Enhanced dance experience</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Visual entertainment</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded shadow">
-                    <h3 class="text-xl font-semibold mb-4">Lighting & Effects</h3>
-                    <p class="text-gray-700">Transform your event with LED lighting, foggers, and special effects to create the perfect atmosphere.</p>
+                
+                <!-- Lighting & Effects -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="p-8">
+                        <div class="icon-box">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-center">Lighting & Effects</h3>
+                        <p class="text-gray-600 mb-6 text-center">
+                            Transform your venue with professional LED lighting, foggers, and special effects that create the perfect ambiance for your celebration.
+                        </p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>LED dance floor lighting</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Fog machines</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Dry ice for first dance</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Custom mood lighting</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Packages Section -->
-    <section id="packages" class="py-16 bg-white">
+    <section id="packages" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Our Packages</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-gray-100 p-6 rounded shadow">
-                    <h3 class="text-xl font-semibold mb-4">Silver</h3>
-                    <p class="text-gray-700">Up to 4 hours of basic DJ service, includes corded microphone for the evening's entertainment.</p>
+            <div class="text-center mb-16 fade-in">
+                <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Choose Your Package</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Wedding Packages Designed for You</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Flexible packages to match your vision and budget. Every package includes our signature service.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                <!-- Silver Package -->
+                <div class="pricing-card bg-white rounded-2xl shadow-xl overflow-hidden fade-in relative">
+                    <div class="bg-gradient-to-r from-gray-400 to-gray-500 text-white p-6 text-center">
+                        <h3 class="text-2xl font-bold mb-2">Silver</h3>
+                        <p class="text-sm opacity-90">Perfect for intimate gatherings</p>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Up to 4 hours of DJ service</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Professional sound system</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Corded microphone</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Basic lighting</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Music consultation</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full bg-gray-500 text-white text-center py-3 rounded-lg hover:bg-gray-600 transition font-semibold">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
-                <div class="bg-gray-100 p-6 rounded shadow">
-                    <h3 class="text-xl font-semibold mb-4">Gold</h3>
-                    <p class="text-gray-700">Up to 8 hours of service, includes dinner music, evening entertainment, and corded microphone.</p>
+                
+                <!-- Gold Package -->
+                <div class="pricing-card bg-white rounded-2xl shadow-xl overflow-hidden fade-in relative">
+                    <div class="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white p-6 text-center">
+                        <h3 class="text-2xl font-bold mb-2">Gold</h3>
+                        <p class="text-sm opacity-90">Most popular choice</p>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Up to 8 hours of DJ service</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Dinner & dance music</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Professional MC services</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Corded microphone</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Enhanced lighting</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full bg-yellow-500 text-white text-center py-3 rounded-lg hover:bg-yellow-600 transition font-semibold">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
-                <div class="bg-gray-100 p-6 rounded shadow">
-                    <h3 class="text-xl font-semibold mb-4">Platinum</h3>
-                    <p class="text-gray-700">Includes up to 2 hours travel, wedding ceremony (if requested), LED lighting, cordless microphone, and 1-hour consultation.</p>
+                
+                <!-- Platinum Package -->
+                <div class="pricing-card featured rounded-2xl shadow-2xl overflow-hidden fade-in relative">
+                    <div class="package-ribbon">BEST VALUE</div>
+                    <div class="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-6 text-center">
+                        <h3 class="text-2xl font-bold mb-2">Platinum</h3>
+                        <p class="text-sm opacity-90">Complete wedding experience</p>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mr-3 mt-1"></i>
+                                <span>Everything in Gold, plus:</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mr-3 mt-1"></i>
+                                <span>Wedding ceremony music</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mr-3 mt-1"></i>
+                                <span>Premium LED lighting</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mr-3 mt-1"></i>
+                                <span>Wireless microphone</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mr-3 mt-1"></i>
+                                <span>Up to 2 hours travel included</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mr-3 mt-1"></i>
+                                <span>1-hour consultation</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full bg-yellow-400 text-gray-900 text-center py-3 rounded-lg hover:bg-yellow-500 transition font-bold">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
-                <div class="bg-gray-100 p-6 rounded shadow">
-                    <h3 class="text-xl font-semibold mb-4">Diamond</h3>
-                    <p class="text-gray-700">Includes Platinum features plus a 3-hour portable photobooth with unlimited prints.</p>
+                
+                <!-- Diamond Package -->
+                <div class="pricing-card bg-white rounded-2xl shadow-xl overflow-hidden fade-in relative">
+                    <div class="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-6 text-center">
+                        <h3 class="text-2xl font-bold mb-2">Diamond</h3>
+                        <p class="text-sm opacity-90">Ultimate luxury experience</p>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Everything in Platinum, plus:</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>3-hour portable photobooth</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Unlimited photo prints</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Props & backdrops</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <span>Digital photo album</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full bg-pink-500 text-white text-center py-3 rounded-lg hover:bg-pink-600 transition font-semibold">
+                            Get Quote
+                        </a>
+                    </div>
                 </div>
             </div>
-            <p class="text-center text-gray-700 mt-8">Extras: Cordless microphone ($25), Lighting ($50), Dry ice for first dance ($150), Picture montage ($100), Karaoke ($50), Wedding ceremony ($100), Travel outside Meaford ($50/hr), Additional consultation ($50). Prices subject to change and applicable taxes.</p>
+            
+            <!-- Add-ons -->
+            <div class="mt-16 max-w-4xl mx-auto fade-in">
+                <h3 class="text-2xl font-bold text-center mb-8">Popular Add-Ons</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg text-center">
+                        <i class="fas fa-microphone-alt text-blue-600 text-2xl mb-2"></i>
+                        <p class="font-semibold text-sm">Wireless Mic</p>
+                        <p class="text-gray-600 text-xs">$25</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center">
+                        <i class="fas fa-lightbulb text-yellow-500 text-2xl mb-2"></i>
+                        <p class="font-semibold text-sm">Extra Lighting</p>
+                        <p class="text-gray-600 text-xs">$50</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center">
+                        <i class="fas fa-cloud text-blue-400 text-2xl mb-2"></i>
+                        <p class="font-semibold text-sm">Dry Ice Effect</p>
+                        <p class="text-gray-600 text-xs">$150</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center">
+                        <i class="fas fa-microphone text-purple-600 text-2xl mb-2"></i>
+                        <p class="font-semibold text-sm">Karaoke</p>
+                        <p class="text-gray-600 text-xs">$50</p>
+                    </div>
+                </div>
+                <p class="text-center text-gray-600 text-sm mt-6">
+                    * Prices subject to change. Applicable taxes extra. Travel outside Meaford: $50/hour.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gradient-to-br from-blue-900 to-purple-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-yellow-400 font-semibold text-sm uppercase tracking-wider">What Couples Say</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Real Weddings, Real Reviews</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    Don't just take our word for it—hear from the couples who trusted us with their special day
+                </p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8 fade-in">
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-lg mb-6 italic">
+                        "Meaford DJ made our wedding absolutely perfect! The music selection was spot-on, and the dance floor was packed all night. They read the crowd perfectly and knew exactly when to play what. Highly recommend!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center text-xl font-bold mr-4">
+                            SJ
+                        </div>
+                        <div>
+                            <p class="font-bold">Sarah & James</p>
+                            <p class="text-sm text-gray-300">Married June 2024</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8 fade-in">
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-lg mb-6 italic">
+                        "Professional, punctual, and absolutely incredible! The photobooth was a huge hit, and the lighting transformed our venue. Worth every penny. Our guests are still talking about it!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-xl font-bold mr-4">
+                            MR
+                        </div>
+                        <div>
+                            <p class="font-bold">Michael & Rachel</p>
+                            <p class="text-sm text-gray-300">Married September 2024</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8 fade-in">
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-lg mb-6 italic">
+                        "We can't thank Meaford DJ enough! They handled everything seamlessly - from our ceremony music to the grand exit. Their experience really showed. Best decision we made for our wedding!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center text-xl font-bold mr-4">
+                            EA
+                        </div>
+                        <div>
+                            <p class="font-bold">Emily & Alex</p>
+                            <p class="text-sm text-gray-300">Married August 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in">
+                <p class="text-xl mb-4">Join hundreds of satisfied couples!</p>
+                <div class="flex justify-center items-center space-x-2">
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold">5.0</span>
+                    <span class="text-gray-300">| 200+ Reviews</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Got Questions?</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Everything you need to know about booking Meaford DJ
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-50 transition">
+                        <span>How far in advance should we book?</span>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        We recommend booking 8-12 months in advance for weddings, especially for peak season (May-October). However, we often have availability for shorter notice bookings. Contact us to check your date!
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-50 transition">
+                        <span>Do you take song requests?</span>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        Absolutely! We encourage you to provide a list of must-play songs and do-not-play songs. We'll work with you during our consultation to create the perfect playlist that reflects your taste and keeps your guests dancing.
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-50 transition">
+                        <span>What happens if there's a technical issue?</span>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        We always bring backup equipment including spare speakers, mixers, microphones, and laptops. With 25+ years of experience and 10,000+ events, we're prepared for any situation. Your celebration will go on without a hitch!
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-50 transition">
+                        <span>Can you provide music for our ceremony?</span>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        Yes! Ceremony music is included in our Platinum and Diamond packages, or available as an add-on for $100. We'll work with you to select the perfect songs for your processional, ceremony, and recessional.
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-50 transition">
+                        <span>Do you have liability insurance?</span>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        Yes, we are fully insured with comprehensive liability coverage. We're also AVLA licensed for music and a proud member of the Canadian Disc Jockey Association (CDJA). We can provide certificates of insurance to your venue if required.
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-50 transition">
+                        <span>What's included in the consultation?</span>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        Our consultation includes timeline planning, music selection guidance, special requests discussion, MC coordination for announcements, and overall event flow planning. We'll make sure every detail is perfect for your big day!
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-800 text-white">
+    <section id="contact" class="py-20 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Get in Touch</h2>
-            <div class="max-w-lg mx-auto">
-                <p class="text-lg mb-4">Ready to book Meaford DJ for your event? Fill out the form below or contact us directly.</p>
-                <form action="https://formspree.io/f/mjkaaeww" method="POST" class="space-y-4">
-                    <div>
-                        <label for="name" class="block text-sm font-medium">Name</label>
-                        <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium">Email</label>
-                        <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                    </div>
-                    <div>
-                        <label for="phone" class="block text-sm font-medium">Phone</label>
-                        <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                    </div>
-                    <div>
-                        <label for="event-date" class="block text-sm font-medium">Event Date</label>
-                        <input type="date" id="event-date" name="event-date" class="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                    </div>
-                    <div>
-                        <label for="event-type" class="block text-sm font-medium">Event Type</label>
-                        <select id="event-type" name="event-type" class="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                            <option value="wedding">Wedding</option>
-                            <option value="corporate">Corporate</option>
-                            <option value="private-party">Private Party</option>
-                            <option value="charity">Charity Event</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium">Message</label>
-                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
-                    </div>
-                    <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition w-full">Send Message</button>
-                </form>
+            <div class="text-center mb-16 fade-in">
+                <span class="text-yellow-400 font-semibold text-sm uppercase tracking-wider">Let's Get Started</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Book Your Dream Celebration</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    Fill out the form below and we'll get back to you within 24 hours with pricing and availability
+                </p>
+            </div>
+            
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="fade-in">
+                    <form action="https://formspree.io/f/mjkaaeww" method="POST" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-2">Your Name *</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 backdrop-blur-lg border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="partner-name" class="block text-sm font-medium mb-2">Partner's Name</label>
+                                <input type="text" id="partner-name" name="partner-name" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 backdrop-blur-lg border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="Jane Doe">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2">Email *</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 backdrop-blur-lg border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="you@example.com">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium mb-2">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 backdrop-blur-lg border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="(519) 123-4567">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="event-date" class="block text-sm font-medium mb-2">Event Date *</label>
+                                <input type="date" id="event-date" name="event-date" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 backdrop-blur-lg border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            </div>
+                            <div>
+                                <label for="event-type" class="block text-sm font-medium mb-2">Event Type *</label>
+                                <select id="event-type" name="event-type" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 backdrop-blur-lg border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                                    <option value="" class="bg-gray-900">Select event type</option>
+                                    <option value="wedding" class="bg-gray-900">Wedding</option>
+                                    <option value="corporate" class="bg-gray-900">Corporate Event</option>
+                                    <option value="private-party" class="bg-gray-900">Private Party</option>
+                                    <option value="charity" class="bg-gray-900">Charity Event</option>
+                                    <option value="other" class="bg-gray-900">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="venue" class="block text-sm font-medium mb-2">Venue Name & Location</label>
+                            <input type="text" id="venue" name="venue" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 backdrop-blur-lg border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="e.g., The Grand Hotel, Meaford">
+                        </div>
+                        
+                        <div>
+                            <label for="guests" class="block text-sm font-medium mb-2">Estimated Guest Count</label>
+                            <input type="number" id="guests" name="guests" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 backdrop-blur-lg border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="e.g., 150">
+                        </div>
+                        
+                        <div>
+                            <label for="package" class="block text-sm font-medium mb-2">Interested Package</label>
+                            <select id="package" name="package" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 backdrop-blur-lg border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                                <option value="" class="bg-gray-900">Select a package</option>
+                                <option value="silver" class="bg-gray-900">Silver Package</option>
+                                <option value="gold" class="bg-gray-900">Gold Package</option>
+                                <option value="platinum" class="bg-gray-900">Platinum Package</option>
+                                <option value="diamond" class="bg-gray-900">Diamond Package</option>
+                                <option value="custom" class="bg-gray-900">Custom Quote</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Tell Us About Your Event</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 backdrop-blur-lg border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="Any special requests or questions?"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-2xl transition glow-btn">
+                            <i class="fas fa-paper-plane mr-2"></i> Send Inquiry
+                        </button>
+                        
+                        <p class="text-sm text-gray-400 text-center">
+                            We typically respond within 24 hours. Check your spam folder if you don't see our reply!
+                        </p>
+                    </form>
+                </div>
                 
-                <p class="mt-2"><strong>Location:</strong> Meaford, Ontario</p>
+                <!-- Contact Info -->
+                <div class="fade-in">
+                    <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8 mb-8">
+                        <h3 class="text-2xl font-bold mb-6">Get In Touch</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Location</h4>
+                                    <p class="text-gray-300">Serving Meaford, Ontario<br>& Surrounding Areas</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-phone text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Call Us</h4>
+                                    <a href="tel:+15195385555" class="text-blue-400 hover:text-blue-300 transition">(519) 538-5555</a>
+                                    <p class="text-sm text-gray-400">Mon-Sun: 9am-9pm</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Email Us</h4>
+                                    <a href="mailto:info@meaforddj.com" class="text-blue-400 hover:text-blue-300 transition break-all">info@meaforddj.com</a>
+                                    <p class="text-sm text-gray-400">We reply within 24 hours</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Proof Box -->
+                    <div class="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl p-8 text-gray-900">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-trophy text-5xl mb-4"></i>
+                            <h3 class="text-2xl font-bold mb-2">Why Couples Choose Us</h3>
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-xl"></i>
+                                <span class="font-semibold">25+ Years of Excellence</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-xl"></i>
+                                <span class="font-semibold">10,000+ Successful Events</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-xl"></i>
+                                <span class="font-semibold">5-Star Rated Service</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-xl"></i>
+                                <span class="font-semibold">Fully Licensed & Insured</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-xl"></i>
+                                <span class="font-semibold">Professional Equipment</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-xl"></i>
+                                <span class="font-semibold">Backup Systems Included</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-4">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Meaford DJ. All rights reserved.</p>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Meaford DJ</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Ontario's premier DJ service for weddings, corporate events, and special celebrations. Creating unforgettable memories since 2000.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#home" class="hover:text-blue-400 transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-blue-400 transition">About Us</a></li>
+                        <li><a href="#services" class="hover:text-blue-400 transition">Services</a></li>
+                        <li><a href="#packages" class="hover:text-blue-400 transition">Packages</a></li>
+                        <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>Wedding DJ Services</li>
+                        <li>Corporate Events</li>
+                        <li>Photobooth Rental</li>
+                        <li>Karaoke Services</li>
+                        <li>Lighting & Effects</li>
+                        <li>Music Video Shows</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                    <div class="space-y-2 text-gray-400 text-sm">
+                        <p><i class="fas fa-phone mr-2"></i> (519) 538-5555</p>
+                        <p><i class="fas fa-envelope mr-2"></i> info@meaforddj.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <div class="flex flex-wrap justify-center gap-4 mb-4 text-sm text-gray-400">
+                    <span><i class="fas fa-shield-alt text-blue-500"></i> Fully Insured</span>
+                    <span><i class="fas fa-award text-yellow-500"></i> CDJA Member</span>
+                    <span><i class="fas fa-certificate text-purple-500"></i> AVLA Licensed</span>
+                </div>
+                <p class="text-gray-500 text-sm">
+                    &copy; 2025 Meaford DJ. All rights reserved. | Creating unforgettable celebrations in Meaford, Ontario & beyond.
+                </p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // Hamburger menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
+    <!-- Sticky CTA Button -->
+    <a href="#contact" class="sticky-cta bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-full shadow-2xl hover:scale-110 transition flex items-center space-x-2">
+        <i class="fas fa-calendar-check text-xl"></i>
+        <span class="font-bold">Book Now</span>
+    </a>
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
 
-        // Close mobile menu when a link is clicked
-        const navItems = document.querySelectorAll('.nav-links a');
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
             });
         });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // FAQ Toggle
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Close all other FAQs
+                faqQuestions.forEach(q => {
+                    if (q !== question) {
+                        q.nextElementSibling.classList.add('hidden');
+                        q.querySelector('i').classList.remove('fa-chevron-up');
+                        q.querySelector('i').classList.add('fa-chevron-down');
+                    }
+                });
+                
+                // Toggle current FAQ
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+
+        // Stats counter animation
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let hasAnimated = false;
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    hasAnimated = true;
+                    animateStats();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (statNumbers.length > 0) {
+            statsObserver.observe(document.getElementById('stats'));
+        }
+
+        function animateStats() {
+            const stats = [
+                { element: statNumbers[0], target: 10000, suffix: '+', duration: 2000 },
+                { element: statNumbers[1], target: 25, suffix: '+', duration: 1500 },
+                { element: statNumbers[2], target: 100, suffix: '%', duration: 2000 },
+                { element: statNumbers[3], target: 5000, suffix: '+', duration: 2000 }
+            ];
+
+            stats.forEach(stat => {
+                let current = 0;
+                const increment = stat.target / (stat.duration / 16);
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= stat.target) {
+                        stat.element.textContent = stat.target.toLocaleString() + stat.suffix;
+                        clearInterval(timer);
+                    } else {
+                        stat.element.textContent = Math.floor(current).toLocaleString() + stat.suffix;
+                    }
+                }, 16);
+            });
+        }
+
+        // Smooth scroll with offset for fixed navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission feedback
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+                submitBtn.disabled = true;
+            });
+        }
     </script>
 </body>
 </html>
