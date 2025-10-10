@@ -158,11 +158,42 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-8">Get in Touch</h2>
             <div class="max-w-lg mx-auto">
-                <p class="text-lg mb-4">Ready to book Meaford DJ for your event? Contact us for more information or to discuss your event needs.</p>
-                <p class="mb-4"><strong>Email:</strong> <a href="mailto:info@meaforddj.com" class="underline">info@meaforddj.com</a></p>
-                <p class="mb-4"><strong>Phone:</strong> <a href="tel:+1234567890" class="underline">+1 (234) 567-890</a></p>
-                <p class="mb-4"><strong>Location:</strong> Meaford, Ontario</p>
-                <a href="mailto:info@meaforddj.com" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Send Us a Message</a>
+                <p class="text-lg mb-4">Ready to book Meaford DJ for your event? Fill out the form below or contact us directly.</p>
+                <form action="https://formspree.io/f/mjkaaeww" method="POST" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium">Name</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium">Email</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium">Phone</label>
+                        <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+                    <div>
+                        <label for="event-date" class="block text-sm font-medium">Event Date</label>
+                        <input type="date" id="event-date" name="event-date" class="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+                    <div>
+                        <label for="event-type" class="block text-sm font-medium">Event Type</label>
+                        <select id="event-type" name="event-type" class="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                            <option value="wedding">Wedding</option>
+                            <option value="corporate">Corporate</option>
+                            <option value="private-party">Private Party</option>
+                            <option value="charity">Charity Event</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium">Message</label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+                    </div>
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition w-full">Send Message</button>
+                </form>
+                
+                <p class="mt-2"><strong>Location:</strong> Meaford, Ontario</p>
             </div>
         </div>
     </section>
